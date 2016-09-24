@@ -1,28 +1,18 @@
-class Greeter {
-    element: HTMLElement;
-    span: HTMLElement;
-    timerToken: number;
-
-    constructor(element: HTMLElement) {
-        this.element = element;
-        this.element.innerHTML += "The time is: ";
-        this.span = document.createElement('span');
-        this.element.appendChild(this.span);
-        this.span.innerText = new Date().toUTCString();
+function pyramid(LineNumber : number):void {
+    var CurrentLine = 0;
+    var spaceCount = 0;
+    var starCount =0;
+    var LineString = "";
+    for(CurrentLine = 1; CurrentLine <= LineNumber; CurrentLine++) {
+        LineString="";
+        for(spaceCount = 0; spaceCount < LineNumber-CurrentLine; spaceCount++) {
+            LineString+=" ";
+        }
+        for(starCount = 0; starCount < 2*CurrentLine-1; starCount++) {
+            LineString+="*";
+        }
+        console.log(LineString);
     }
-
-    start() {
-        this.timerToken = setInterval(() => this.span.innerHTML = new Date().toUTCString(), 500);
-    }
-
-    stop() {
-        clearTimeout(this.timerToken);
-    }
-
 }
-
-window.onload = () => {
-    var el = document.getElementById('content');
-    var greeter = new Greeter(el);
-    greeter.start();
-};
+var lineCount = 3;
+pyramid(lineCount);
